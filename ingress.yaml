@@ -1,0 +1,50 @@
+### ingress.yaml
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: multi-service-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: / # if using nginx ingress
+spec:
+  rules:
+  - host: order.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: order-service
+            port:
+              number: 8080
+  - host: restaurant.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: restaurant-service
+            port:
+              number: 8080
+  - host: user.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: user-service
+            port:
+              number: 3000
+  - host: menu.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: menu-service
+            port:
+              number: 3000
