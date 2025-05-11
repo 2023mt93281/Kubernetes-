@@ -1,0 +1,25 @@
+minikube start
+minikube status
+minikube docker-env
+& minikube -p scalable docker-env --shell powershell | Invoke-Expression OR
+ @FOR /f "tokens=*" %i IN ('minikube -p scalable docker-env --shell cmd') DO @%i
+
+kubectl get pods
+
+docker build -t order-service:0.0.1 .
+docker build -t restaurant-service:0.0.1test .
+docker build -t user-service:0.0.1 .
+docker build -t menu-service:0.0.1 .
+
+docker images
+
+kubectl apply -f deployments.yaml
+kubectl apply -f mysql-deployment.yaml
+kubectl apply -f mongo-deployments.yaml
+kubectl apply -f ingress.yaml
+
+kubectl get services -o wide
+
+kubectl describe ingress multi-service-ingress
+
+minikube tunnel
