@@ -12,3 +12,6 @@ The repository maintains all the deployment files necessary for deploying the be
 |ingress.yaml |Contains all the configuration for port redirection and making services available on *.local|
 |mongo-deployment.yaml|Contains configuration for the MongoDB setup|
 |mysql-deployment.yaml|Contains configurations for MySQL setup|
+
+## Minikube
+This file comtains all the commands ued to run the services
